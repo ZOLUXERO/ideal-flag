@@ -11,6 +11,8 @@ public interface EnvironmentsService {
 
     Environments getEnvironment(String environmentId);
 
+    List<Environments> getEnvironmentByProjectId(Long idProject);
+
     Boolean removeEnvironment(String environmentId);
 
     Environments createEnvironment(CreateEnvironmentsRequest request);

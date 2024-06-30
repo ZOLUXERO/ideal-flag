@@ -67,6 +67,12 @@ public class EnvironmentsServiceImpl implements EnvironmentsService {
         return Boolean.TRUE;
     }
 
+    @Override
+    public List<Environments> getEnvironmentByProjectId(Long projectId) {
+        List<Environments> environments = environmentsRepository.findByProjectId(projectId);
+        return environments.isEmpty() ? null : environments;
+    }
+
     /** Falta manejar la excepcion cuando la primerca condicion se cumple!!! */
     @Override
     public Environments createEnvironment(CreateEnvironmentsRequest request) {

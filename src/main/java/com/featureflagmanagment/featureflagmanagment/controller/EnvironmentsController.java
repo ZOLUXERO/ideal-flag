@@ -41,6 +41,17 @@ public class EnvironmentsController {
         }
     }
 
+    @GetMapping("/environments/project/{projectId}")
+    public ResponseEntity<List<Environments>> getEnvironmentsByProject(@PathVariable Long projectId) {
+        log.info("Getting environment by project id: {}", projectId);
+        List<Environments> environments = environmentsService.getEnvironmentByProjectId(projectId);
+        if (environments != null) {
+            return ResponseEntity.ok(environments);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/environments/{environmentId}")
     public ResponseEntity<Void> deleteEnvironment(@PathVariable String environmentId) {
         Boolean removed = environmentsService.removeEnvironment(environmentId);
