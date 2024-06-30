@@ -57,7 +57,7 @@ public class EnvironmentsFeatureFlagsController {
         if (environmentsFeatureFlags != null) {
             return ResponseEntity.ok(environmentsFeatureFlags);
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(Collections.emptyList());
         }
     }
 

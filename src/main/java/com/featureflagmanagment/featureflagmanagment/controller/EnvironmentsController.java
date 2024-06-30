@@ -48,7 +48,7 @@ public class EnvironmentsController {
         if (environments != null) {
             return ResponseEntity.ok(environments);
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(Collections.emptyList());
         }
     }
 
