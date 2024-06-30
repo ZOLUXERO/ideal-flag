@@ -50,6 +50,17 @@ public class EnvironmentsFeatureFlagsController {
         }
     }
 
+    @GetMapping("/ff/env/{id}")
+    public ResponseEntity<List<EnvironmentsFeatureFlags>> getFlagsByEnvironment(@PathVariable Long id) {
+        log.info("Getting flag by environment id: {}", id);
+        List<EnvironmentsFeatureFlags> environmentsFeatureFlags = environmentsFeatureFlagService.getByEnvId(id);
+        if (environmentsFeatureFlags != null) {
+            return ResponseEntity.ok(environmentsFeatureFlags);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PutMapping("/ff/{id}")
     public ResponseEntity<EnvironmentsFeatureFlags> updateFlag(@PathVariable Long id, @RequestBody UpdateEnvironmentsFeatureFlagsRequest request) {
         EnvironmentsFeatureFlags updateFlag = environmentsFeatureFlagService.update(id, request);

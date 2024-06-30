@@ -26,6 +26,12 @@ public class EnvironmentsFeatureFlagsServiceImpl implements EnvironmentsFeatureF
         return environmentsFeatureFlagsRepository.findById(Long.valueOf(environmentsFeatureFlagsId)).orElse(null);
     }
 
+    @Override
+    public List<EnvironmentsFeatureFlags> getByEnvId(Long idEnvironment){
+        List<EnvironmentsFeatureFlags> environmentsFeatureFlags = environmentsFeatureFlagsRepository.findByEnvId(idEnvironment);
+        return environmentsFeatureFlags.isEmpty() ? null : environmentsFeatureFlags;
+    }
+
     public List<EnvironmentsFeatureFlags> getAllEnvFf(Long idProject) {
         List<EnvironmentsFeatureFlags> environmentsFeatureFlags = environmentsFeatureFlagsRepository.findFf(idProject);
         return environmentsFeatureFlags.isEmpty() ? null : environmentsFeatureFlags;

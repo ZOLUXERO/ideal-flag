@@ -12,5 +12,7 @@ public interface EnvironmentsFeatureFlagService {
 
     EnvironmentsFeatureFlags getEnviromentsFeatureFlagById(String environmentFeatureFlagId);
 
+    List<EnvironmentsFeatureFlags> getByEnvId(Long idEnvironment);
+
     EnvironmentsFeatureFlags update(Long id,  UpdateEnvironmentsFeatureFlagsRequest request);
 }
